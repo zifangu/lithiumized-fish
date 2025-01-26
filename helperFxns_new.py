@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.sparse import csr_matrix as sparsify
 
+#hivan :)
+
 def lett2num(msa_lett, code='ACDEFGHIKLMNPQRSTVWY-'):
     ''' Translate an alignment from a representation where the 20 natural amino
     acids are represented by letters to a representation where they are
