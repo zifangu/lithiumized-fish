@@ -37,6 +37,21 @@ def alg2bin(alg, N_aa=21):
     Abin = sparsify(Abin_tens.reshape(N_aa*N_pos, N_seq, order='F').T)
     return Abin
 
+def filterAln_iaj(hd, seq):
+    '''
+    Given a numeric (but not yet binarized) alignment, filter out highly
+    gapped positions and sequences according to a cutoff. Returns the filtered
+    set of headers and sequences
+    '''
+    seqPosFilter = seq[:,np.sum(seq == 0,0)/len(seq) < 0.5]
+    hdFilter, ixKeep = [],[]
+    for i in range(len(seqPosFilter)):
+        if (np.sum(seqPosFilter[i] == 0)/len(seqPosFilter[i]) < 0.5):
+            hdFilter.append(hd[i])
+            ixKeep.append(i)
+    seqFilter = seqPosFilter[ixKeep,:]
+
+    return hdFilter, seqFilter
 
 def filterAln(hd, seq):
     '''

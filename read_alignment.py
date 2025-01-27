@@ -12,7 +12,7 @@ def readAlignment(path: str):
                 continue
             if '>' in line: 
                 continue
-            df.append(line)
+            df.append(line[:-1])
     return df
 
 def main():
