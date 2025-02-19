@@ -5,7 +5,7 @@ def readAlignment(path: str):
 
     with open(path) as file:
         content = file.readlines()
-        print(content)
+        # print(content)
         df = []
         for line in content:
             if line == '\n': 
